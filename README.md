@@ -1,26 +1,30 @@
-# Clustering Assignment – UCI Wholesale Customers Dataset
 
-This project explores the performance of three unsupervised clustering algorithms applied on the Wholesale Customers dataset from the UCI Machine Learning Repository. The study evaluates how preprocessing techniques and number of clusters affect clustering quality.
+# 🍷 Clustering Assignment – UCI Wine Recognition Dataset
+
+This project performs a comparative analysis of clustering algorithms on the **Wine Recognition** dataset from the UCI Machine Learning Repository. It evaluates the impact of different preprocessing techniques and cluster counts on clustering quality using various evaluation metrics.
 
 ---
 
 ## 📊 Dataset
-- **Source**: [Wholesale Customers Data Set – UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Wholesale+customers)
-- **Features Used**: Fresh, Milk, Grocery, Frozen, Detergents_Paper, Delicassen
-- **Samples**: 440
+
+- **Source**: [Wine Recognition Data – UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/wine)
+- **Features Used**: 13 numerical chemical analysis attributes of wines from three different cultivars.
+- **Samples**: 178
 
 ---
 
 ## 🧪 Clustering Algorithms Used
-- KMeans
-- Hierarchical Clustering (Agglomerative)
-- Mean Shift Clustering
+
+- **KMeans**
+- **Hierarchical Clustering (Agglomerative)**
+- **Mean Shift Clustering**
 
 ---
 
 ## ⚙️ Preprocessing Techniques
-- No Processing
-- Normalization
+
+- Raw (No Processing)
+- Normalization (Min-Max Scaling)
 - Log Transformation
 - PCA (Dimensionality Reduction)
 - T+N (Log Transform + Normalization)
@@ -29,9 +33,10 @@ This project explores the performance of three unsupervised clustering algorithm
 ---
 
 ## 📈 Evaluation Metrics
-- Silhouette Score (Higher = Better)
-- Calinski-Harabasz Index (Higher = Better)
-- Davies-Bouldin Index (Lower = Better)
+
+- **Silhouette Score** (Higher = Better)
+- **Calinski-Harabasz Index** (Higher = Better)
+- **Davies-Bouldin Index** (Lower = Better)
 
 ---
 
@@ -44,7 +49,7 @@ This project explores the performance of three unsupervised clustering algorithm
 ![Hierarchical](graphs/hier_graph.png)
 
 ### Mean Shift Clustering (auto-detected clusters)
-![Mean Shift](graphs/mean_graph.png)
+![Mean Shift](graphs/mean_shift_graph.png)
 
 ---
 
@@ -52,17 +57,14 @@ This project explores the performance of three unsupervised clustering algorithm
 
 | Algorithm           | Best Preprocessing | Best k  | Silhouette | CH Score | DB Score |
 |---------------------|--------------------|--------|------------|----------|----------|
-| KMeans              | PCA                | 3      | **0.5229** | 285.49   | 0.75     |
-| Hierarchical        | PCA                | 3      | 0.5252     | 245.35   | 0.73     |
-| Mean Shift          | PCA                | auto   | 0.4897     | 100.66   | 0.48     |
+| KMeans              | T+N+PCA            | 3      | **0.28**   | 165.3    | 0.67     |
+| Hierarchical        | T+N+PCA            | 3      | 0.26       | 143.9    | 0.73     |
+| Mean Shift          | T+N+PCA            | auto   | 0.23       | 125.7    | 0.85     |
 
 ---
 
 ## 📌 Conclusion
 
-- **KMeans with PCA and k=3** gave the best clustering performance visually and numerically.
-- Mean Shift detected more clusters but lacked meaningful separation.
-- PCA significantly improved the separation and interpretability of clusters across all methods.
-
-
-
+- **KMeans with T+N+PCA and k=3** provided the best performance across most metrics and clear separation in visualization.
+- **PCA** helped significantly in dimensionality reduction and cluster interpretability.
+- **Mean Shift**, while automatically detecting clusters, showed lower evaluation scores compared to other methods.
